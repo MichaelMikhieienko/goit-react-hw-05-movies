@@ -6,7 +6,7 @@ import { Link, useSearchParams } from 'react-router-dom';
 const Movies = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [searchResults, setSearchResults] = useState([]);
-  const [params, setParams] = useSearchParams();
+  const [, setParams] = useSearchParams();
 
   const handleSearch = () => {
     const apiKey = '1a79fc301203f205161daf43db66b1ec';

@@ -1,5 +1,5 @@
 // Movies.jsx
-import React, { useEffect, useState } from 'react';
+import React, { Fragment, useEffect, useState } from 'react';
 import axios from 'axios';
 import { Link, useSearchParams } from 'react-router-dom';
 
@@ -15,9 +15,9 @@ const Movies = () => {
     setParams({ query: searchQuery });
   };
 
-  const handleChangeInput = (event) => {
+  const handleChangeInput = event => {
     setSearchQuery(event.target.value);
-  }
+  };
 
   useEffect(() => {
     if (!query) {
@@ -31,22 +31,20 @@ const Movies = () => {
   }, [query]);
 
   return (
-    <div>
-      <h1>Search Movies</h1>
-      <input
-        type="text"
-        value={searchQuery}
-        onChange={handleChangeInput}
-      />
-      <button onClick={handleSearch}>Search</button>
-      <ul>
-        {searchResults.map(movie => (
-          <li key={movie.id}>
-            <Link to={`/movies/${movie.id}`}>{movie.title}</Link>
-          </li>
-        ))}
-      </ul>
-    </div>
+    <Fragment>
+      <div>
+        <h1>Search Movies</h1>
+        <input type="text" value={searchQuery} onChange={handleChangeInput} />
+        <button onClick={handleSearch}>Search</button>
+        <ul>
+          {searchResults.map(movie => (
+            <li key={movie.id}>
+              <Link to={`/movies/${movie.id}`}>{movie.title}</Link>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </Fragment>
   );
 };
 
